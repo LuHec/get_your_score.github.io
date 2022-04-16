@@ -7,6 +7,7 @@
 import requests
 from bs4 import BeautifulSoup
 import csv
+import time
 
 
 def get_lesson(response_lesson):
@@ -56,6 +57,12 @@ if __name__ == '__main__':
 
     lesson_list = get_lesson(response_lesson)
     exam_list = get_exam(response_exam);
+
+    # 防ban测试
+    # while 1:
+    #     response_exam = requests.post(url=score_url, headers=headers, data=score_data).json()
+    #     print('test...')
+    #     time.sleep(3)
 
     with open('exam.csv', 'w', newline='', encoding='utf-8') as f:
         for exam in exam_list:
